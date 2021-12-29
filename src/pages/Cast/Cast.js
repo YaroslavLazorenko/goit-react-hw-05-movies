@@ -3,6 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import FetchMovies from '../../services/themoviedb-api';
 import { Status } from '../../consts';
+import Styles from './Cast.module.css';
 
 const fetchMovies = new FetchMovies();
 
@@ -46,13 +47,18 @@ export default function Cast() {
           <ul>
             {cast.map(({ name, character, profile }) => {
               return (
-                <li key={name}>
-                  <p>{name}</p>
-                  <p>Character: {character}</p>
+                <li className={Styles['list-item']} key={name}>
+                  <p className={Styles.name}>{name}</p>
+                  <p className={Styles.character}>Character: {character}</p>
                   {profile ? (
-                    <img src={`https://image.tmdb.org/t/p/w342${profile}`} alt={name} />
+                    <img
+                      className={Styles.image}
+                      src={`https://image.tmdb.org/t/p/w342${profile}`}
+                      alt={name}
+                    />
                   ) : (
                     <img
+                      className={Styles.image}
                       src="https://st3.depositphotos.com/7486768/17806/v/380/depositphotos_178065822-stock-illustration-profile-anonymous-face-icon-gray.jpg?forcejpeg=true"
                       alt={name}
                     />

@@ -3,6 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import FetchMovies from '../../services/themoviedb-api';
 import { Status } from '../../consts';
+import Styles from './Reviews.module.css';
 
 const fetchMovies = new FetchMovies();
 
@@ -47,8 +48,8 @@ export default function Reviews() {
             {reviews.map(({ author, content }, idx) => {
               return (
                 <li key={idx}>
-                  <p>Author: {author}</p>
-                  <p>{content}</p>
+                  <p className={Styles['author-text']}>Author: {author}</p>
+                  <p className={Styles['review-text']}>{content}</p>
                 </li>
               );
             })}

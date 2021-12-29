@@ -4,6 +4,7 @@ import Loader from 'react-loader-spinner';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import FetchMovies from '../../services/themoviedb-api';
 import { Status } from '../../consts';
+import Styles from './MoviesPage.module.css';
 
 const fetchMovies = new FetchMovies();
 
@@ -65,7 +66,7 @@ export default function MoviesPage() {
 
   if (status === Status.RESOLVED || status === Status.IDLE) {
     return (
-      <>
+      <div className={Styles.container}>
         <SearchBar onSubmitSearchQuery={handleSubmitSearchQuery} />
         {status === Status.IDLE && <p>Please, enter your search query to find movies.</p>}
         {moviesByQuery.length === 0 && status === Status.RESOLVED && (
@@ -80,7 +81,7 @@ export default function MoviesPage() {
             ))}
           </ul>
         )}
-      </>
+      </div>
     );
   }
 }

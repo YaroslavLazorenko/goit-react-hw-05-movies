@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import FetchMovies from '../../services/themoviedb-api';
 import { ROUTES, Status } from '../../consts';
+import Styles from './HomePage.module.css';
 
 const fetchMovies = new FetchMovies();
 
@@ -39,11 +40,11 @@ export default function HomeView() {
   if (status === Status.RESOLVED) {
     return (
       <>
-        <h1>Trending today</h1>
+        <h1 className={Styles.heading}>Trending today</h1>
         {trendingMovies.length !== 0 && (
           <ul>
             {trendingMovies.map(movie => (
-              <li key={movie.id}>
+              <li key={movie.id} className={Styles['list-item']}>
                 <Link to={`${ROUTES.MOVIES}/${movie.id}`}>{movie.title}</Link>
               </li>
             ))}
