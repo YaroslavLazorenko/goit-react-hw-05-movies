@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Outlet, Route, Routes, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { ROUTES } from '../consts';
 import FetchMovies from '../services/themoviedb-api';
-import Cast from './Cast';
+import GoBackButton from '../components/GoBackButton';
 
 const fetchMovies = new FetchMovies();
 
@@ -18,11 +18,11 @@ export default function MovieDetailsPage() {
     <>
       {movieDetails && (
         <>
-          {/* <GoBackButton/>  */}
+          <GoBackButton />
           {movieDetails.posterPath ? (
             <picture>
               <source
-                srcSet={` https://image.tmdb.org/t/p/w342${movieDetails.posterPath} 1x,
+                srcSet={`https://image.tmdb.org/t/p/w342${movieDetails.posterPath} 1x,
                 https://image.tmdb.org/t/p/w780${movieDetails.posterPath} 2x`}
                 type="image/jpeg"
               />
@@ -43,7 +43,24 @@ export default function MovieDetailsPage() {
           <p>{movieDetails.overview}</p>
           <h3>Genres</h3>
           <p>{movieDetails.genres}</p>
-          <Outlet />
+          <div>
+            <h2>Additional information</h2>
+            <nav>
+              <ul>
+                <li>
+                  <Link to={ROUTES.CAST} replace>
+                    Cast
+                  </Link>
+                </li>
+                <li>
+                  <Link to={ROUTES.REVIEWS} replace>
+                    Reviews
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <Outlet context={movieId} />
         </>
       )}
     </>

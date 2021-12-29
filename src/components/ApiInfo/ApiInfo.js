@@ -4,11 +4,10 @@ export default function ApiInfo() {
   return (
     <footer>
       <p>
-        <span>Information about films by</span>
+        <span>Information about the films is provided by</span>
         <a href="https://www.themoviedb.org/">
-          <img src={logo} alt="Logo of the movie db" width={150} />
+          <img src={logo} alt="Logo of The Movie DB" width={150} />
         </a>
-        <span>API</span>
       </p>
     </footer>
   );
