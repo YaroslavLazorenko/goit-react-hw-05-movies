@@ -5,3 +5,10 @@ export const ROUTES = {
   CAST: 'cast',
   REVIEWS: 'reviews',
 };
+
+export const Status = {
+  IDLE: 'idle',
+  PENDING: 'pending',
+  RESOLVED: 'resolved',
+  REJECTED: 'rejected',
+};
