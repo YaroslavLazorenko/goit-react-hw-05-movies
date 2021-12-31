@@ -78,7 +78,7 @@ export default class FetchMovies {
   }
 
   async getMoviesByQuery(searchQuery) {
-    const parameters = `${this.SEARCH_PARAMETERS}/?api_key=${this.KEY}&query=${searchQuery}&include_adult=false`;
+    const parameters = `${this.SEARCH_PARAMETERS}?api_key=${this.KEY}&query=${searchQuery}&include_adult=false`;
 
     const response = await axios.get(parameters);
     return response.data.results.map(({ id, original_title }) => {
